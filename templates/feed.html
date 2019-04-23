@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <link rel="stylesheet" href="{{ url_for('static', filename='css/template.css') }}">
+	</head>
+   <body>
+   		<div class= "header">
+   			<div><img src={{header.imageUrl}}></div>
+   			<div style="margin-left: 3rem"><h1>RSS Feed for {{header.title}}</h1></div>
+      	</div>
+      {% set count = namespace(a=0) %}
+      {%for item in feedItems %}
+       	<div class ="card">
+       		<div>
+	       		{% if item.image  is defined %}
+	       			<img src={{item.image}}>
+	       		{% else %}
+	       			<img src="/static/item-{{count.a}}.png">
+	       		{% endif %}
+	       		{% set count.a = count.a + 1 %}
+	       		{% set count.a = count.a%4 %}
+       		</div>
+	       	<div class="container">
+	       		<a href={{item.link}}>{{item.title}} </a>
+	       		<br>
+	       		<br>
+	       		<div>{{item.description}} </div>
+	       	</div>
+       </div>
+       {%endfor%}
+   </body>
+</html>
