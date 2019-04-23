@@ -2,6 +2,7 @@
 <html>
 
 <head>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/template.css') }}">
   <title>RSS Reader</title>
   <meta charset="UTF-8">
 </head>
@@ -9,9 +10,10 @@
 <body>
 <H1> Enter URL for RSS feed</H1>
 <form action="/result" method = "POST">
-	URl:
-	<input type="text" name="url">
-	<input type="submit">	
+	<div>
+		URL: <input type="url" name="url" size="60">
+	<input type="submit" value="Fetch!">
+	</div>	
 </form>
 
 </body>
